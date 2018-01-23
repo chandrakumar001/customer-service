@@ -19,7 +19,7 @@ public class SwaggerConfig {
 	public Docket api() {                
 		return new Docket(DocumentationType.SWAGGER_2)          
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.accenture.demo.customer"))
+				.apis(RequestHandlerSelectors.basePackage("com.demo.customer"))
 				//.paths(PathSelectors.any())
 				.paths(regex("/customers.*"))
 				.build()

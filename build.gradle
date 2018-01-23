@@ -7,12 +7,14 @@ buildscript {
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("io.spring.gradle:dependency-management-plugin:0.5.1.RELEASE")
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: "io.spring.dependency-management"
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -24,6 +26,22 @@ repositories {
 
 
 dependencies {
+	//Required for Spring Cloud Services Config server
+	//The following dependency is to address the certificate issue generated due to hitting https endpoints where
+	// the target has self signed certificate instead of a actual certificate
+	compile("io.pivotal.spring.cloud:cloudfoundry-certificate-truster:1.0.1.RELEASE")
+
+	// Required for Spring Cloud Bus
+	compile('org.springframework.cloud:spring-cloud-starter-bus-amqp')
+	//Required for Spring Cloud Services Config server
+	compile("io.pivotal.spring.cloud:spring-cloud-services-starter-config-client")
+	//Required for Spring Cloud Services Service Registry
+	compile("io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry")
+	//Required for Spring Cloud Services Circuit Breaker
+	compile("io.pivotal.spring.cloud:spring-cloud-services-starter-circuit-breaker")
+
+
+
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.cloud:spring-cloud-starter-eureka')
 	compile('org.springframework.cloud:spring-cloud-starter-eureka-server')
@@ -42,10 +60,12 @@ jar {
  	}
 }
 ext {
+	springCloudServicesVersion = '1.6.1.RELEASE'
 	springCloudVersion = 'Edgware.SR1'
 }
 dependencyManagement {
 	imports {
+		mavenBom "io.pivotal.spring.cloud:spring-cloud-services-dependencies:${springCloudServicesVersion}"
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
 }
