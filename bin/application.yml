@@ -3,13 +3,19 @@ server:
   context-path: /customer
   error:
     whitelabel:
-      enabled: true
+      enabled: false
  
 spring:
   application:
     name: customer-service
     
-
+management:
+  security:
+    enabled: false
+    
+security:
+  basic:
+    enabled: false
 
 # To disable Hystrix in Feign
 feign:

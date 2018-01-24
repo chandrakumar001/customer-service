@@ -16,12 +16,12 @@ import com.demo.customer.model.Customer;
 import com.demo.customer.service.CustomerService;
 import com.demo.customer.validation.CustomerValidation;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+//import io.swagger.annotations.Api;
+//import io.swagger.annotations.ApiOperation;
+//import io.swagger.annotations.ApiResponse;
+//import io.swagger.annotations.ApiResponses;
 
-@Api(value="customerservice", description="Operations pertaining for customer service")
+//@Api(value="customerservice", description="Operations pertaining for customer service")
 @RestController
 public class CustomerController {
 
@@ -33,14 +33,14 @@ public class CustomerController {
 
 
 
-	@ApiOperation(value = "View a list of available products", response = Iterable.class)
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Successfully retrieved list"),
-			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
-			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
-	})
-	
+//	@ApiOperation(value = "View a list of available products", response = Iterable.class)
+//	@ApiResponses(value = {
+//			@ApiResponse(code = 200, message = "Successfully retrieved list"),
+//			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+//			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+//			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
+//	})
+//	
 	@GetMapping("/customers")
 	public ResponseEntity<?>  getCustomers() {
 		LOGGER.info("calling getCustomers() method...");
@@ -53,22 +53,22 @@ public class CustomerController {
 	}
 
 	
-	@ApiOperation(value = "available products", response = Customer.class)
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Successfully retrieved list"),
-			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
-			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
-	})
+//	@ApiOperation(value = "available products", response = Customer.class)
+//	@ApiResponses(value = {
+//			@ApiResponse(code = 200, message = "Successfully retrieved list"),
+//			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+//			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+//			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
+//	})
 
 	@GetMapping("/customers/{id}")
-	public ResponseEntity<?>  getCustomer(@RequestHeader String jwt, @PathVariable("id") int id) {
+	public Customer  getCustomer(@RequestHeader String jwt, @PathVariable("id") int id) {
 		LOGGER.info("calling getCustomer() method..."+id);
 		Customer cs=custService.getCustomer(id);
 		if(null==cs) {
-			new ResponseEntity<>(new Customer(), HttpStatus.OK);
+			new Customer();
 		}
-		return new ResponseEntity<>(cs, HttpStatus.OK);
+		return cs;
 	}
 
 	@PostMapping("/customers/create")

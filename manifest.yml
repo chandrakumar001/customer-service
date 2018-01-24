@@ -1,12 +1,12 @@
 ---
 applications:
- - name: Customer-Service
+ - name: customer-service
    memory: 800M
    instances: 1
-   domain: customerapps-service.cfapps.io
+   host: demo-non-customer-service
+   domains:
+    - cfapps.io
    services:
-    - hystrix
-    - config-server
+    - circuit-breaker
     - service-registry
-   path: build/libs/Customer-Service-0.0.1-SNAPSHOT.jar
-   buildpack: https://github.com/cloudfoundry/java-buildpack.git#v4.3
+   path: build/libs/customer-service-0.0.1-SNAPSHOT.jar

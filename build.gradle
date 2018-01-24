@@ -32,9 +32,9 @@ dependencies {
 	compile("io.pivotal.spring.cloud:cloudfoundry-certificate-truster:1.0.1.RELEASE")
 
 	// Required for Spring Cloud Bus
-	compile('org.springframework.cloud:spring-cloud-starter-bus-amqp')
+	//compile('org.springframework.cloud:spring-cloud-starter-bus-amqp')
 	//Required for Spring Cloud Services Config server
-	compile("io.pivotal.spring.cloud:spring-cloud-services-starter-config-client")
+	//compile("io.pivotal.spring.cloud:spring-cloud-services-starter-config-client")
 	//Required for Spring Cloud Services Service Registry
 	compile("io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry")
 	//Required for Spring Cloud Services Circuit Breaker
@@ -49,9 +49,9 @@ dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-hystrix')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
-    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
-// https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
-    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.6.1'
+    //compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
+	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+    //compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.6.1'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 jar {
