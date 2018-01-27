@@ -29,9 +29,13 @@ public class CustomerServiceImpl implements CustomerService {
 
 
 	@Override
+	@HystrixCommand(fallbackMethod = "callGetOrderResp_Fallback")
 	public Customer getCustomer(int idNumber) {
 		List<OrderResponse>  orderss=demo(idNumber);
-		Customer cac = customers.stream().filter(id->idNumber==id.getCust_id()).findFirst().orElse(null);
+		Customer cac=null;
+		if(!orderss.isEmpty() && null!=orderss) {
+			cac = customers.stream().filter(id->idNumber==id.getCust_id()).findFirst().orElse(null);
+		}
 		if(null!=cac) {
 			cac.setOrderResp(orderss);
 		}
@@ -45,28 +49,33 @@ public class CustomerServiceImpl implements CustomerService {
 		return customer;
 	}
 
-	@HystrixCommand(fallbackMethod = "callGetOrderResp_Fallback")
 	public List<OrderResponse> demo(int idNumber){
-		List<OrderResponse> orders=orderClient.getCustomers();
 		List<OrderResponse> orderss=new ArrayList<>();
-		if(null!=orders && !orders.isEmpty() ) {
-			/*List<OrderResponse> orderss=orders.stream()
-				.map(id->{
-					if(id.getCustom_Id()==idNumber) {
-						return id;
+
+		try {
+			List<OrderResponse> orders=orderClient.getCustomers();
+			System.out.println("Hy...................");
+			if(null!=orders && !orders.isEmpty() ) {
+				/*List<OrderResponse> orderss=orders.stream()
+					.map(id->{
+						if(id.getCustom_Id()==idNumber) {
+							return id;
+						}
+					}).collect(Collectors.toList());*/
+				for(OrderResponse mat :orders) {
+					if(mat.getCustom_Id()==idNumber) {
+						orderss.add(mat);
 					}
-				}).collect(Collectors.toList());*/
-			for(OrderResponse mat :orders) {
-				if(mat.getCustom_Id()==idNumber) {
-					orderss.add(mat);
 				}
 			}
-
+		}catch (Exception e) {
+			System.out.println("Exception");
 		}
 		return orderss;
 	}
 
-	public List<OrderResponse> callGetOrderResp_Fallback(int idNumber) {
+	public Customer callGetOrderResp_Fallback(int idNumber) {
+		System.out.println("Hy......dscv............."+idNumber);
 		return null;
 	}
 

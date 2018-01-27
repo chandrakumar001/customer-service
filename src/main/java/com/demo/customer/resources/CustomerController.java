@@ -62,7 +62,7 @@ public class CustomerController {
 //	})
 
 	@GetMapping("/customers/{id}")
-	public Customer  getCustomer(@RequestHeader String jwt, @PathVariable("id") int id) {
+	public Customer  getCustomer( @PathVariable("id") int id) {//@RequestHeader String jwt,
 		LOGGER.info("calling getCustomer() method..."+id);
 		Customer cs=custService.getCustomer(id);
 		if(null==cs) {

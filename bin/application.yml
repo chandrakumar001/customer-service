@@ -17,6 +17,8 @@ security:
   basic:
     enabled: false
 
+
+
 # To disable Hystrix in Feign
 feign:
   hystrix:
@@ -27,8 +29,10 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
         loggerLevel: full
+        
 
-
+ribbon:
+  ReadTimeout: 30000
 
 # To set thread isolation to SEMAPHORE
 hystrix:
