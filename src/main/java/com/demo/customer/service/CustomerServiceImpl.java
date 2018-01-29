@@ -27,9 +27,8 @@ public class CustomerServiceImpl implements CustomerService {
 		return customers;
 	}
 
-
-	@Override
 	@HystrixCommand(fallbackMethod = "callGetOrderResp_Fallback")
+	@Override
 	public Customer getCustomer(int idNumber) {
 		List<OrderResponse>  orderss=demo(idNumber);
 		Customer cac=null;

@@ -41,7 +41,15 @@ dependencies {
 	compile("io.pivotal.spring.cloud:spring-cloud-services-starter-circuit-breaker")
 
 
+ 	compile 'org.springframework.cloud:spring-cloud-spring-service-connector:2.0.1.RELEASE'
+    // If you intend to deploy the app on Cloud Foundry, add the following
+    compile 'org.springframework.cloud:spring-cloud-cloudfoundry-connector:2.0.1.RELEASE'
 
+    // If you intend to deploy the app on Heroku, add the following
+    compile 'org.springframework.cloud:spring-cloud-heroku-connector:2.0.1.RELEASE'
+
+    // It is okay to add more than one cloud connector; the right one will
+    // be picked during runtime 
 	
 	compile('org.springframework.cloud:spring-cloud-starter-eureka')
 	compile('org.springframework.cloud:spring-cloud-starter-feign')

@@ -6,6 +6,8 @@ applications:
    host: demo-non-customer-service
    domains:
     - cfapps.io
+   env:
+    SPRING_PROFILES_ACTIVE: cloud
    services:
     - circuit-breaker
     - service-registry
