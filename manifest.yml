@@ -11,4 +11,5 @@ applications:
    services:
     - circuit-breaker
     - service-registry
+    - logger-aggregator
    path: build/libs/customer-service-0.0.1-SNAPSHOT.jar

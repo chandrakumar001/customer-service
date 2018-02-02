@@ -1,0 +1,44 @@
+server:
+  port: 1111
+  context-path: /customer
+  error:
+    whitelabel:
+      enabled: false
+ 
+spring:
+  application:
+    name: customer-service
+    
+management:
+  security:
+    enabled: false
+    
+security:
+  basic:
+    enabled: false
+
+
+# To disable Hystrix in Feign
+feign:
+  hystrix:
+    enabled: false
+  client:
+    config:
+      feignName:
+        connectTimeout: 5000
+        readTimeout: 5000
+        
+
+ribbon:
+  ReadTimeout: 30000
+
+# To set thread isolation to SEMAPHORE
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+
+      
+   
