@@ -10,7 +10,7 @@ import com.demo.customer.model.OrderResponse;
 
 //@FeignClient(name="orderService", url="http://localhost:2222/order",fallback = CustomerServiceFeignClientFallback.class)
 //@FeignClient(name=CustomerConstansts.ORDER_SERVICE+CustomerConstansts.ORDER_SERVICE_CONTEXT_PATH,fallback = OrderClientFallback.class)
-@FeignClient(name=CustomerConstansts.ORDER_SERVICE+CustomerConstansts.ORDER_SERVICE_CONTEXT_PATH)
+@FeignClient(name=CustomerConstansts.ORDER_SERVICE_CONTEXT_PATH)
 public interface OrderClient {
 	@GetMapping(value="/orders")
 	public List<OrderResponse>  getCustomers();

@@ -13,13 +13,14 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
-
-	private  List<Customer> customers=null;
+	
 	@Autowired
+	private  static List<Customer> customers;
 	private OrderClient orderClient;
-
-	public CustomerServiceImpl(){
-		customers = SampleData.getCustomerList();
+	
+	@Autowired
+	public CustomerServiceImpl(OrderClient orderClient){
+		this.orderClient=orderClient;
 	}
 
 	@Override
@@ -74,7 +75,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	public Customer callGetOrderResp_Fallback(int idNumber) {
-		System.out.println("Hy......dscv............."+idNumber);
+		System.out.println("callGetOrderResp_Fallback ---Hy......dscv............."+idNumber);
 		return null;
 	}
 

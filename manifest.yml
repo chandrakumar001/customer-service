@@ -3,7 +3,7 @@ applications:
  - name: customer-service
    memory: 800M
    instances: 1
-   host: demo-non-customer-service
+   host: demo-nonprod-customer-service
    domains:
     - cfapps.io
    env:
