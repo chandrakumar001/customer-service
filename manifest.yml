@@ -4,8 +4,6 @@ applications:
    memory: 800M
    instances: 1
    host: demo-nonprod-customer-service
-   domains:
-    - cfapps.io
    env:
     SPRING_PROFILES_ACTIVE: cloud
    services:
