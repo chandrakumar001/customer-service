@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.demo.customer.model.Customer;
 import com.demo.customer.model.OrderResponse;
-import com.demo.customer.utill.SampleData;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @Service

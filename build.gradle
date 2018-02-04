@@ -42,6 +42,8 @@ dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-hystrix')
 	compile('org.springframework.cloud:spring-cloud-starter-turbine')
 
+	compile('org.spockframework:spock-core:1.1-groovy-2.4-rc-2')
+	compile('org.spockframework:spock-spring:1.1-groovy-2.4-rc-3')
 	
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-actuator')

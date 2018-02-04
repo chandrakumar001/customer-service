@@ -27,11 +27,13 @@ public class CustomerController {
 	private static Logger LOGGER=LoggerFactory.getLogger(CustomerController.class);
 
 	private CustomerService custService;
-	private CustomerValidation customerValidation;
+	@SuppressWarnings("unused")
+	private CustomerValidation customerValidation=null;
 
 	@Autowired
-	public CustomerController(CustomerService custService){
+	public CustomerController(CustomerService custService,CustomerValidation customerValidation){
 		this.custService=custService;
+		this.customerValidation=customerValidation;
 	}
 	
 	@ApiOperation(value = "View a list of available products", response = Iterable.class)

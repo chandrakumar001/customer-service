@@ -2,11 +2,11 @@ package com.demo.customer.model;
 
 import java.util.List;
 
-//import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 public class Customer {
 	
-	//@ApiModelProperty(notes = "The auto-generated version of the product")
+	@ApiModelProperty(notes = "The auto-generated version of the product")
 	private int cust_id;
 	private String name=null;
 	private String extra_info=null;
